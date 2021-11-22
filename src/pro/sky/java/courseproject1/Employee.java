@@ -1,13 +1,13 @@
-package courseproject;
+package pro.sky.java.courseproject1;
 
 import java.util.Objects;
 
 public class Employee {
-    private static int counter;
     private final String fullname;
+    private final int id;
+    private static int counter;
     private int department;
     private double salary;
-    private final int id;
 
 
     public Employee(String fullname, int department, int salary) {
@@ -22,11 +22,11 @@ public class Employee {
     }
 
     public String getFullname() {
-        return this.fullname;
+        return fullname;
     }
 
     public int getDepartment() {
-        return this.department;
+        return department;
     }
 
     public void setDepartment(int department) {
@@ -41,8 +41,21 @@ public class Employee {
         this.salary = salary;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id;
+    }
 
-    public String toSting() {
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
         return "ФИО: " + fullname + "; Отдел № " + department + "; Заработная плата " + salary + " рублей.";
     }
 }
